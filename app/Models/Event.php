@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Marquee extends Model
+class Event extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'services',
+        'marquee_id',
     ];
-    public function events()
+    public function marquee()
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Marquee::class);
     }
 }

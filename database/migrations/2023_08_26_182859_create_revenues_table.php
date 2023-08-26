@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('revenues', function (Blueprint $table) {
             $table->id();
-            $table->json('services');
+            $table->string('hall');
+            $table->date('date');
+            $table->float('marque_revenue');
+            $table->float('owner_revenue');
+            $table->float('partner_revenue');
+
             $table->unsignedBigInteger('marquee_id');
             $table->foreign('marquee_id')->references('id')->on('marquees')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('revenues');
     }
 };
